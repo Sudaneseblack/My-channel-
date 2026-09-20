@@ -1,212 +1,1748 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
+
+
+:root {
+
+    --bg: #030b1b;
+    --bg2: #071a35;
+
+    --blue: #168cff;
+    --cyan: #25d9ff;
+
+    --text: #f5f9ff;
+    --muted: #91a8c7;
+
+    --glass: rgba(8, 27, 55, .64);
+
+    --border: rgba(79, 168, 255, .25);
+
+}
+
+
+
+/* =========================
+   الإعدادات الأساسية
+========================= */
+
 * {
+
     margin: 0;
     padding: 0;
+
     box-sizing: border-box;
+
 }
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
 
 body {
+
     min-height: 100vh;
 
+    overflow-x: hidden;
+
     font-family:
+        "Cairo",
+        Tahoma,
         Arial,
-        "Tahoma",
         sans-serif;
 
+    color: var(--text);
+
     background:
+
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(17, 133, 255, .28),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 0% 60%,
+            rgba(0, 210, 255, .10),
+            transparent 30%
+        ),
+
         linear-gradient(
-            135deg,
-            #0f172a,
-            #172554,
-            #0369a1
+            145deg,
+            var(--bg),
+            var(--bg2) 55%,
+            #020816
         );
 
-    color: white;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
 }
 
-.container {
-    width: 100%;
-    max-width: 600px;
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+
 }
 
-/* الهيدر */
 
-.header {
-    text-align: center;
-    margin-bottom: 35px;
+
+/* =========================
+   الخلفية
+========================= */
+
+.background {
+
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+
 }
 
-.telegram-icon {
-    width: 75px;
-    height: 75px;
 
-    margin: 0 auto 20px;
+.background::before {
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    content: "";
 
-    background: rgba(255,255,255,0.15);
+    position: absolute;
 
-    border: 1px solid rgba(255,255,255,0.2);
+    inset: 0;
+
+    opacity: .12;
+
+    background-image:
+
+        linear-gradient(
+            rgba(120,180,255,.08) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(120,180,255,.08) 1px,
+            transparent 1px
+        );
+
+    background-size: 55px 55px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 80%
+        );
+
+}
+
+
+
+/* الإضاءات */
+
+.orb {
+
+    position: absolute;
 
     border-radius: 50%;
 
-    font-size: 34px;
+    filter: blur(70px);
 
-    backdrop-filter: blur(10px);
+    opacity: .25;
+
+    animation:
+        float 10s ease-in-out infinite alternate;
+
 }
 
-.header h1 {
-    font-size: 32px;
-    margin-bottom: 10px;
+
+.orb-one {
+
+    width: 300px;
+    height: 300px;
+
+    background: #087eff;
+
+    top: -110px;
+    right: -90px;
+
 }
 
-.header p {
-    color: rgba(255,255,255,0.75);
-    font-size: 16px;
+
+.orb-two {
+
+    width: 240px;
+    height: 240px;
+
+    background: #00cfff;
+
+    left: -110px;
+    top: 48%;
+
+    animation-delay: -3s;
+
 }
 
-/* البطاقات */
 
-.cards {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+.orb-three {
+
+    width: 260px;
+    height: 260px;
+
+    background: #1952ff;
+
+    right: 20%;
+    bottom: -170px;
+
+    animation-delay: -6s;
+
 }
 
-.card {
-    text-decoration: none;
-    color: white;
 
-    display: flex;
+
+/* طائرات Telegram */
+
+.plane,
+.star {
+
+    position: absolute;
+
+    color:
+        rgba(
+            81,
+            181,
+            255,
+            .20
+        );
+
+    text-shadow:
+        0 0 20px
+        rgba(
+            37,
+            175,
+            255,
+            .35
+        );
+
+}
+
+
+.plane {
+
+    font-size: 38px;
+
+    animation:
+        fly 12s linear infinite;
+
+}
+
+
+.plane-one {
+
+    top: 18%;
+    left: -80px;
+
+}
+
+
+.plane-two {
+
+    top: 68%;
+    right: -70px;
+
+    animation-delay: -4s;
+
+    transform: scale(.65);
+
+}
+
+
+.plane-three {
+
+    top: 40%;
+    right: 8%;
+
+    animation-delay: -8s;
+
+    transform: scale(.4);
+
+}
+
+
+
+/* النجوم */
+
+.star {
+
+    font-size: 24px;
+
+    animation:
+        twinkle 3s ease-in-out infinite;
+
+}
+
+
+.star-one {
+
+    top: 16%;
+    right: 20%;
+
+}
+
+
+.star-two {
+
+    top: 36%;
+    left: 12%;
+
+    animation-delay: 1s;
+
+}
+
+
+.star-three {
+
+    bottom: 25%;
+    right: 12%;
+
+    animation-delay: 2s;
+
+}
+
+
+
+/* =========================
+   الصفحة
+========================= */
+
+.page {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(
+            calc(100% - 30px),
+            720px
+        );
+
+    margin: auto;
+
+    padding:
+        42px 0 30px;
+
+}
+
+
+
+/* =========================
+   الهيدر
+========================= */
+
+.hero {
+
+    text-align: center;
+
+}
+
+
+.vip-badge {
+
+    display: inline-flex;
+
     align-items: center;
 
-    padding: 22px;
+    gap: 10px;
 
-    border-radius: 20px;
+    padding:
+        7px 16px;
 
-    background: rgba(255,255,255,0.12);
+    border:
+        1px solid
+        rgba(
+            54,
+            184,
+            255,
+            .35
+        );
 
-    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 99px;
 
-    backdrop-filter: blur(12px);
+    background:
+        rgba(
+            12,
+            67,
+            125,
+            .25
+        );
 
-    transition:
-        transform 0.25s ease,
-        background 0.25s ease,
-        box-shadow 0.25s ease;
-}
+    color: #9bdcff;
 
-.card:hover {
-    transform: translateY(-5px);
+    font-size: 11px;
 
-    background: rgba(255,255,255,0.18);
+    font-weight: 800;
+
+    letter-spacing: 2px;
 
     box-shadow:
-        0 15px 35px rgba(0,0,0,0.25);
+
+        inset 0 0 20px
+        rgba(
+            0,
+            158,
+            255,
+            .08
+        ),
+
+        0 0 25px
+        rgba(
+            0,
+            142,
+            255,
+            .08
+        );
+
 }
 
-.card:active {
-    transform: scale(0.98);
+
+.vip-badge span {
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background:
+        var(--cyan);
+
+    box-shadow:
+        0 0 12px
+        var(--cyan);
+
 }
 
-/* الأيقونة */
 
-.icon {
-    width: 65px;
-    height: 65px;
 
-    flex-shrink: 0;
+/* الشعار */
+
+.logo-wrap {
+
+    width: 118px;
+    height: 118px;
+
+    margin:
+        25px auto 15px;
+
+    position: relative;
+
+    display: grid;
+
+    place-items: center;
+
+}
+
+
+.logo-ring,
+.logo-ring::before,
+.logo-ring::after {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    content: "";
+
+}
+
+
+.logo-ring {
+
+    inset: 0;
+
+    border:
+        1px solid
+        rgba(
+            62,
+            188,
+            255,
+            .55
+        );
+
+    box-shadow:
+
+        0 0 35px
+        rgba(
+            0,
+            148,
+            255,
+            .32
+        ),
+
+        inset 0 0 30px
+        rgba(
+            0,
+            148,
+            255,
+            .16
+        );
+
+    animation:
+        pulse 3s ease-in-out infinite;
+
+}
+
+
+.logo-ring::before {
+
+    inset: 9px;
+
+    border:
+        1px dashed
+        rgba(
+            75,
+            205,
+            255,
+            .38
+        );
+
+    animation:
+        spin 16s linear infinite;
+
+}
+
+
+.logo-ring::after {
+
+    inset: 19px;
+
+    border:
+        1px solid
+        rgba(
+            68,
+            168,
+            255,
+            .25
+        );
+
+}
+
+
+.telegram-logo {
+
+    width: 75px;
+    height: 75px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    font-size: 38px;
+
+    transform:
+        rotate(-14deg);
+
+    background:
+        linear-gradient(
+            145deg,
+            #40caff,
+            #087cff
+        );
+
+    box-shadow:
+
+        0 10px 35px
+        rgba(
+            0,
+            129,
+            255,
+            .45
+        ),
+
+        inset 0 1px 1px
+        rgba(
+            255,
+            255,
+            255,
+            .55
+        );
+
+}
+
+
+.eyebrow {
+
+    color:
+        #63caff;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.hero h1 {
+
+    font-size:
+        clamp(
+            40px,
+            10vw,
+            66px
+        );
+
+    line-height: 1.1;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+
+}
+
+
+.hero h1 strong {
+
+    color:
+        #55caff;
+
+    text-shadow:
+        0 0 28px
+        rgba(
+            40,
+            179,
+            255,
+            .35
+        );
+
+}
+
+
+.hero-text {
+
+    margin-top: 8px;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+}
+
+
+.hero-sub {
+
+    margin-top: 2px;
+
+    color:
+        var(--muted);
+
+    font-size: 13px;
+
+}
+
+
+
+/* =========================
+   البطاقات
+========================= */
+
+.cards {
+
+    display: grid;
+
+    gap: 18px;
+
+    margin-top: 32px;
+
+}
+
+
+.vip-card {
+
+    position: relative;
+
+    isolation: isolate;
+
+    overflow: hidden;
+
+    padding: 23px;
+
+    min-height: 260px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 27px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(
+                16,
+                55,
+                101,
+                .72
+            ),
+            rgba(
+                4,
+                19,
+                41,
+                .72
+            )
+        );
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+
+        0 18px 55px
+        rgba(
+            0,
+            0,
+            0,
+            .25
+        ),
+
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            .06
+        );
+
+    transition:
+
+        transform .35s ease,
+
+        border-color .35s ease,
+
+        box-shadow .35s ease;
+
+}
+
+
+.vip-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -1;
+
+    opacity: .45;
+
+    background:
+
+        linear-gradient(
+            120deg,
+            transparent 20%,
+            rgba(
+                255,
+                255,
+                255,
+                .07
+            ) 50%,
+            transparent 80%
+        );
+
+    transform:
+        translateX(100%);
+
+    transition:
+        transform .7s ease;
+
+}
+
+
+.vip-card:hover,
+.vip-card:focus-visible {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(
+            57,
+            188,
+            255,
+            .65
+        );
+
+    box-shadow:
+
+        0 25px 70px
+        rgba(
+            0,
+            112,
+            255,
+            .18
+        ),
+
+        0 0 35px
+        rgba(
+            0,
+            174,
+            255,
+            .08
+        ),
+
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            .10
+        );
+
+}
+
+
+.vip-card:hover::before {
+
+    transform:
+        translateX(-100%);
+
+}
+
+
+
+/* إضاءة البطاقة */
+
+.channel .card-glow {
+
+    background:
+        #008cff;
+
+}
+
+
+.developer .card-glow {
+
+    background:
+        #00d5c0;
+
+}
+
+
+.card-glow {
+
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    border-radius: 50%;
+
+    filter: blur(65px);
+
+    opacity: .12;
+
+    left: -60px;
+    top: -80px;
+
+    z-index: -1;
+
+}
+
+
+
+/* أعلى البطاقة */
+
+.card-top {
 
     display: flex;
+
     align-items: center;
-    justify-content: center;
 
-    background: rgba(255,255,255,0.15);
+    justify-content: space-between;
 
-    border-radius: 17px;
-
-    font-size: 30px;
-
-    margin-left: 18px;
 }
+
+
+.card-icon {
+
+    width: 62px;
+    height: 62px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 19px;
+
+    font-size: 29px;
+
+    background:
+        rgba(
+            24,
+            137,
+            255,
+            .13
+        );
+
+    border:
+        1px solid
+        rgba(
+            67,
+            177,
+            255,
+            .24
+        );
+
+    box-shadow:
+
+        inset 0 0 22px
+        rgba(
+            0,
+            143,
+            255,
+            .10
+        );
+
+}
+
+
+.developer .card-icon {
+
+    background:
+        rgba(
+            0,
+            205,
+            188,
+            .10
+        );
+
+    border-color:
+        rgba(
+            50,
+            230,
+            214,
+            .22
+        );
+
+}
+
+
+
+/* الحالة */
+
+.status {
+
+    padding:
+        6px 10px;
+
+    border-radius: 99px;
+
+    color:
+        #9fc1e2;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .04
+        );
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .07
+        );
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+
+}
+
+
+.status i {
+
+    display: inline-block;
+
+    width: 5px;
+    height: 5px;
+
+    margin-left: 5px;
+
+    border-radius: 50%;
+
+    background:
+        #2de6a0;
+
+    box-shadow:
+        0 0 9px
+        #2de6a0;
+
+}
+
+
 
 /* محتوى البطاقة */
 
 .card-content {
-    flex: 1;
+
+    margin-top: 22px;
+
 }
+
+
+.small-title {
+
+    color:
+        #62c7ff;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+}
+
+
+.developer .small-title {
+
+    color:
+        #5ce6d8;
+
+}
+
 
 .card-content h2 {
-    font-size: 21px;
-    margin-bottom: 5px;
+
+    margin-top: 2px;
+
+    font-size: 25px;
+
+    font-weight: 800;
+
 }
 
-.card-content p {
-    color: rgba(255,255,255,0.7);
+
+.card-content h2 span {
+
+    color:
+        #eaf7ff;
+
+}
+
+
+.username {
+
+    margin-top: 2px;
 
     direction: ltr;
 
     text-align: right;
 
-    margin-bottom: 8px;
-}
+    color:
+        #7fd3ff;
 
-.card-content span {
     font-size: 14px;
 
-    color: #bae6fd;
+    font-weight: 600;
+
 }
 
-/* الفوتر */
 
-footer {
+.description {
+
+    margin-top: 8px;
+
+    color:
+        #91a8c7;
+
+    font-size: 13px;
+
+}
+
+
+
+/* زر البطاقة */
+
+.card-action {
+
+    margin-top: 19px;
+
+    height: 48px;
+
+    padding:
+        0 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            100deg,
+            #087fff,
+            #19bfff
+        );
+
+    box-shadow:
+        0 9px 28px
+        rgba(
+            0,
+            128,
+            255,
+            .22
+        );
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+}
+
+
+.developer .card-action {
+
+    background:
+        linear-gradient(
+            100deg,
+            #00a99a,
+            #15d6c2
+        );
+
+    box-shadow:
+        0 9px 28px
+        rgba(
+            0,
+            194,
+            172,
+            .17
+        );
+
+}
+
+
+.card-action b {
+
+    font-size: 22px;
+
+    transition:
+        transform .25s ease;
+
+}
+
+
+.vip-card:hover
+.card-action b {
+
+    transform:
+        translateX(-4px);
+
+}
+
+
+
+/* =========================
+   الفاصل
+========================= */
+
+.vip-note {
+
+    margin:
+        35px auto 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    max-width: 390px;
+
+    color:
+        #6e87a7;
+
+}
+
+
+.vip-note .line {
+
+    height: 1px;
+
+    flex: 1;
+
+    background:
+        linear-gradient(
+            to left,
+            transparent,
+            rgba(
+                73,
+                161,
+                230,
+                .35
+            ),
+            transparent
+        );
+
+}
+
+
+.diamond {
+
+    color:
+        #46bfff;
+
+    font-size: 8px;
+
+    text-shadow:
+        0 0 12px
+        #46bfff;
+
+}
+
+
+.vip-note p {
+
+    white-space:
+        nowrap;
+
+    font-size: 11px;
+
+}
+
+
+
+/* =========================
+   الفوتر
+========================= */
+
+.footer {
+
     text-align: center;
 
     margin-top: 35px;
 
-    color: rgba(255,255,255,0.5);
+    color:
+        #7389a6;
 
-    font-size: 13px;
 }
 
 
-/* الهواتف */
+.footer-logo {
 
-@media (max-width: 480px) {
+    margin: auto;
 
-    body {
-        padding: 15px;
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    color: white;
+
+    background:
+        #118df4;
+
+    transform:
+        rotate(-14deg);
+
+    box-shadow:
+        0 0 25px
+        rgba(
+            17,
+            141,
+            244,
+            .25
+        );
+
+}
+
+
+.footer p {
+
+    margin-top: 8px;
+
+    color:
+        #b6cce5;
+
+    font-weight: 700;
+
+}
+
+
+.footer small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 10px;
+
+}
+
+
+.footer .made {
+
+    margin-top: 8px;
+
+    color:
+        #66809f;
+
+}
+
+
+.footer .made span {
+
+    color:
+        #38bfff;
+
+}
+
+
+
+/* =========================
+   شاشة التحميل
+========================= */
+
+.loader {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        #030b1b;
+
+    transition:
+        opacity .6s ease,
+        visibility .6s ease;
+
+}
+
+
+body.loaded .loader {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+}
+
+
+.loader-logo {
+
+    width: 78px;
+    height: 78px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #43ccff,
+            #087cff
+        );
+
+    font-size: 38px;
+
+    transform:
+        rotate(-14deg);
+
+    box-shadow:
+        0 0 50px
+        rgba(
+            0,
+            150,
+            255,
+            .4
+        );
+
+    animation:
+        loaderPulse
+        1.2s
+        ease-in-out
+        infinite
+        alternate;
+
+}
+
+
+.loader-title {
+
+    margin-top: 17px;
+
+    font-size: 23px;
+
+    font-weight: 800;
+
+}
+
+
+.loader-line {
+
+    width: 130px;
+
+    height: 2px;
+
+    margin-top: 15px;
+
+    overflow: hidden;
+
+    border-radius: 9px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .08
+        );
+
+}
+
+
+.loader-line span {
+
+    display: block;
+
+    width: 50%;
+
+    height: 100%;
+
+    background:
+        #25c8ff;
+
+    box-shadow:
+        0 0 12px
+        #25c8ff;
+
+    animation:
+        loading
+        1s
+        ease-in-out
+        infinite;
+
+}
+
+
+.loader-text {
+
+    margin-top: 9px;
+
+    color:
+        #708aaa;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+}
+
+
+
+/* =========================
+   الحركات
+========================= */
+
+.reveal {
+
+    animation:
+        reveal
+        .8s
+        both;
+
+}
+
+
+.cards .reveal:nth-child(2) {
+
+    animation-delay:
+        .15s;
+
+}
+
+
+.vip-note.reveal {
+
+    animation-delay:
+        .25s;
+
+}
+
+
+.footer.reveal {
+
+    animation-delay:
+        .35s;
+
+}
+
+
+@keyframes reveal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(22px);
+
     }
 
-    .header h1 {
-        font-size: 27px;
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
     }
 
-    .card {
-        padding: 18px;
+}
+
+
+@keyframes pulse {
+
+    50% {
+
+        transform:
+            scale(1.04);
+
+        opacity: .7;
+
     }
 
-    .icon {
-        width: 55px;
-        height: 55px;
+}
 
-        font-size: 25px;
 
-        margin-left: 14px;
+@keyframes spin {
+
+    to {
+
+        transform:
+            rotate(360deg);
+
     }
+
+}
+
+
+@keyframes float {
+
+    to {
+
+        transform:
+            translate(
+                25px,
+                35px
+            )
+            scale(1.08);
+
+    }
+
+}
+
+
+@keyframes fly {
+
+    0% {
+
+        transform:
+            translateX(0)
+            rotate(-10deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateX(55vw)
+            translateY(-35px)
+            rotate(4deg);
+
+    }
+
+    100% {
+
+        transform:
+            translateX(110vw)
+            translateY(10px)
+            rotate(12deg);
+
+    }
+
+}
+
+
+@keyframes twinkle {
+
+    50% {
+
+        opacity: .25;
+
+        transform:
+            scale(.7);
+
+    }
+
+}
+
+
+@keyframes loaderPulse {
+
+    to {
+
+        transform:
+            rotate(-14deg)
+            scale(1.06);
+
+    }
+
+}
+
+
+@keyframes loading {
+
+    0% {
+
+        transform:
+            translateX(-130px);
+
+    }
+
+    100% {
+
+        transform:
+            translateX(260px);
+
+    }
+
+}
+
+
+
+/* =========================
+   الهاتف
+========================= */
+
+@media (max-width: 520px) {
+
+    .page {
+
+        width:
+            min(
+                calc(100% - 22px),
+                720px
+            );
+
+        padding-top: 28px;
+
+    }
+
+
+    .logo-wrap {
+
+        width: 104px;
+        height: 104px;
+
+    }
+
+
+    .telegram-logo {
+
+        width: 66px;
+        height: 66px;
+
+        font-size: 33px;
+
+    }
+
+
+    .vip-card {
+
+        padding: 19px;
+
+        border-radius: 23px;
+
+    }
+
 
     .card-content h2 {
-        font-size: 18px;
+
+        font-size: 22px;
+
     }
 
-    .card-content p {
-        font-size: 14px;
+
+    .card-action {
+
+        height: 46px;
+
     }
+
+}
+
+
+
+/* تقليل الحركة إذا كان الجهاز يطلب ذلك */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before {
+
+        animation-duration:
+            .01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        scroll-behavior:
+            auto !important;
+
+    }
+
 }
