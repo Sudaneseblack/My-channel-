@@ -1,0 +1,212 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        "Tahoma",
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #172554,
+            #0369a1
+        );
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+}
+
+/* الهيدر */
+
+.header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.telegram-icon {
+    width: 75px;
+    height: 75px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,0.15);
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    border-radius: 50%;
+
+    font-size: 34px;
+
+    backdrop-filter: blur(10px);
+}
+
+.header h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.header p {
+    color: rgba(255,255,255,0.75);
+    font-size: 16px;
+}
+
+/* البطاقات */
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.card {
+    text-decoration: none;
+    color: white;
+
+    display: flex;
+    align-items: center;
+
+    padding: 22px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.12);
+
+    border: 1px solid rgba(255,255,255,0.18);
+
+    backdrop-filter: blur(12px);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+
+    background: rgba(255,255,255,0.18);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.25);
+}
+
+.card:active {
+    transform: scale(0.98);
+}
+
+/* الأيقونة */
+
+.icon {
+    width: 65px;
+    height: 65px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,0.15);
+
+    border-radius: 17px;
+
+    font-size: 30px;
+
+    margin-left: 18px;
+}
+
+/* محتوى البطاقة */
+
+.card-content {
+    flex: 1;
+}
+
+.card-content h2 {
+    font-size: 21px;
+    margin-bottom: 5px;
+}
+
+.card-content p {
+    color: rgba(255,255,255,0.7);
+
+    direction: ltr;
+
+    text-align: right;
+
+    margin-bottom: 8px;
+}
+
+.card-content span {
+    font-size: 14px;
+
+    color: #bae6fd;
+}
+
+/* الفوتر */
+
+footer {
+    text-align: center;
+
+    margin-top: 35px;
+
+    color: rgba(255,255,255,0.5);
+
+    font-size: 13px;
+}
+
+
+/* الهواتف */
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .header h1 {
+        font-size: 27px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .icon {
+        width: 55px;
+        height: 55px;
+
+        font-size: 25px;
+
+        margin-left: 14px;
+    }
+
+    .card-content h2 {
+        font-size: 18px;
+    }
+
+    .card-content p {
+        font-size: 14px;
+    }
+}
